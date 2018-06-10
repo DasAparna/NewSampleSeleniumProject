@@ -1,24 +1,26 @@
 package com.sampleSelenumProject.utilities;
 
+/*
+ * @Author: Aparna
+ * Description: This class contains all static final values
+ */
 public class Common_Constants {
 	
 	static Reusable_Logic reu = new Reusable_Logic();
 	
-	public static String automation_Url = "http://automationpractice.com/index.php";
+	public static final String AUTOMATION_URL = "http://automationpractice.com/index.php";
 	
-	public static String file_Path = "D:\\Workspace\\SampleSeleniumProject\\TestData.xlsx";
+	public static final String FILE_PATH = "D:\\Workspace\\SampleSeleniumProject\\TestData.xlsx";
 	
 	
-	public static String emailid = "test"+reu.getTime()+"@test.com";
-	public static final String password = "sele1234";
+	public static String EMAILID = "test"+reu.getTime()+"@test.com";
+	public static final String PASSWORD = "sele1234";
 	
-	public static final String address1 = "AutomationTest";
-	public static final String postal_Code = "22222";
-	public static final String primary_Phone = "9999999999";
-	public static final String f_name = "Name";
-	public static final String l_name = "Last";
-	public static final String aliasName = "alias";
-	
-	public static String companyName = "Test_Account"+reu.getTime();
-	
+	public static final String ADDRESS1 = "AutomationTest";
+	public static final String POSTAL_CODE = "TW33AL";
+	public static final String PRIMARY_PHONE = "08993993939";
+	public static final String F_NAME = "Test First Name";
+	public static final String L_NAME = "Test Last Name";
+	public static final String ALIAS_NAME = "Test Alias";
+	public static String COMPANY_NAME = "Test_Account"+reu.getTime();
 }

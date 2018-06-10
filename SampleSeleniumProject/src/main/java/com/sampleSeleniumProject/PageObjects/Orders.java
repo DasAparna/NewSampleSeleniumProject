@@ -14,7 +14,10 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.sampleSelenumProject.utilities.Data_Reader;
 import com.sampleSelenumProject.utilities.Reusable_Logic;
-
+/**
+ * @Author : Aparna
+ * @Description : This class represents order functionality
+ */
 public class Orders extends Reusable_Logic {
 
 	@FindBy(xpath = "(//li/a[contains(text(),'Women')])[1]")
@@ -22,7 +25,7 @@ public class Orders extends Reusable_Logic {
 	@FindBy(xpath = "(//ul/li[@class]/a[contains(@title,'Casual Dresses')])[1]")
 	private WebElement casualDresses;
 	@FindBy(xpath = "//select[contains(@id,'selectProductSort')]")
-	private WebElement sortByAscOrderDD;
+	private WebElement sortByAscOrderDropDown;
 	@FindBy(xpath = "(//a/span[contains(text(),'Add to cart')])[1]")
 	private WebElement addToCartBeforeSize;
 	@FindBy(xpath = "(//a/span[contains(text(),'More')])[1]")
@@ -62,37 +65,33 @@ public class Orders extends Reusable_Logic {
 	@FindBy(xpath = "(//a/img[contains(@itemprop,'image')])[1]")
 	private WebElement item;
 
-	Data_Reader dr = new Data_Reader();
+	Data_Reader dataReader = new Data_Reader();
 
 	public Orders(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
-
+	/**
+	 * @Description: This function will create an order for Woman
+	 */
 	public void womenAppearalOrder() throws InterruptedException, IOException,
-			EncryptedDocumentException, InvalidFormatException {
+											EncryptedDocumentException,
+											InvalidFormatException {
 		try {
-			String sort = dr.getValuesFromExcel("Sheet1", 1, 6);
-			String size = dr.getValuesFromExcel("Sheet1", 1, 7);
+			String sort = dataReader.getValuesFromExcel("Sheet1", 1, 6);
+			String size = dataReader.getValuesFromExcel("Sheet1", 1, 7);
 
 			this.womenSection.click();
 			wait_Till_PageLoad();
 			scrollDown();
 
-			WebElement ele = sortByAscOrderDD;
-			Select sl = new Select(ele);
-			sl.selectByValue(sort);
+			select_ByValue(sortByAscOrderDropDown,sort);
 			wait(1000);
-			WebElement ele2 = item;
-			Actions act = new Actions(driver);
-			act.moveToElement(ele2).build().perform();
+			mouseHover(item);
 			wait_Till_PageLoad();
 			if (this.moreOptn.isDisplayed()) {
 				this.moreOptn.click();
-
-				WebElement ele1 = sizeDD;
-				Select sl2 = new Select(ele1);
-				sl2.selectByValue(size);
-
+				select_ByValue(sizeDD, size);
+				
 				this.chooseClr.click();
 				wait_Till_PageLoad();
 				this.addTOCart.click();

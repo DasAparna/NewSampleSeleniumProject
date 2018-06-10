@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import org.apache.commons.logging.Log;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -21,79 +22,63 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
 
-public class Data_Reader {
+/**
+ * @Description : This class will read constant parameterized input data from excel using dataProvider
+ */
+public class Data_Reader extends Log {
 
-	static int x;
-	static InputStream is;
+	static InputStream inStream;
 
 	@DataProvider
 	public static Object[][] ReadAutomation_Data() throws IOException {
 
 		String[][] excel_data = null;
-		XSSFWorkbook wb;
+		XSSFWorkbook workBook;
 		XSSFSheet sheet;
 		try {
-			is = new BufferedInputStream(new FileInputStream(
-					Common_Constants.file_Path));
-			wb = new XSSFWorkbook(is);
-			sheet = wb.getSheetAt(0);
-			int rows = sheet.getPhysicalNumberOfRows() - 1; // int
-			// cols=sheet.getRow(1).getPhysicalNumberOfCells();
-			x = sheet.getLastRowNum();
+			inStream = new BufferedInputStream(new FileInputStream(
+					Common_Constants.FILE_PATH));
+			workBook = new XSSFWorkbook(inStream);
+			sheet = workBook.getSheetAt(0);
+			int rows = sheet.getPhysicalNumberOfRows() - 1;
 			System.out.println("Rows in given Excel :" + rows);
 			excel_data = new String[rows][3];
-
 			for (int i = 1; i <= rows; i++) {
 				XSSFRow row = sheet.getRow(i);
+				//describe
 				for (int j = 0; j < 3; j++) {
 					System.out.println("Dyanmic Row Values"
 							+ row.getCell(j).toString());
 					excel_data[i - 1][j] = row.getCell(j).toString();
 				}
 			}
-		} catch (Exception z) {
-			System.out.println(z);
+		} catch (IOException exp) {
+			Log.info
+			//Log.info("File Not Found "+exp.getMessage());
 		}
 		return excel_data;
 	}
-
-	public int num_of_rows() {
-		return x;
-	}
-
+	/*
+	 * @Description : This function will read dynamic data from excel 
+	 * @PAram: String ,int
+	 */
+	
 	public String getValuesFromExcel(String sheetName, int rowNum, int colNum)
 			throws EncryptedDocumentException, InvalidFormatException,
 			IOException {
 		String value = null;
 		String loc;
 		try {
-			loc = Common_Constants.file_Path;
+			loc = Common_Constants.FILE_PATH;
 			FileInputStream fis = new FileInputStream(loc);
-			Workbook wb = WorkbookFactory.create(fis);
-			Sheet sh = wb.getSheet(sheetName);
+			Workbook workBook = WorkbookFactory.create(fis);
+			Sheet sh = workBook.getSheet(sheetName);
 			Row rw = sh.getRow(rowNum);
 			value = rw.getCell(colNum).getStringCellValue();
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("File Not Found "+ e.getMessage());
 		}
 		return value;
 	}
-
-	public void setValuesFromExcel(String sheetName, int rowNum, int colNum,
-			String data) throws EncryptedDocumentException,
-			InvalidFormatException, IOException {
-		String loc = Common_Constants.file_Path;
-		FileInputStream fis = new FileInputStream(loc);
-		Workbook wb = WorkbookFactory.create(fis);
-		Sheet sh = wb.getSheet(sheetName);
-		sh.getRow(rowNum).createCell(colNum).setCellValue(data);
-		FileOutputStream fos = new FileOutputStream(loc);
-		wb.write(fos);
-		((FileInputStream) wb).close();
-		fos.close();
-		fis.close();
-	}
-
 }
