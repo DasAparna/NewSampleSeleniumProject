@@ -73,15 +73,19 @@ public class LoginPage extends Reusable_Logic {
 	private WebElement registerBtn;
 	@FindBy(xpath = "//div/ol/li | //a/span[contains(text(),' Home')]")
 	private WebElement errorMsgOrHomePage;
+
 	/*
 	 * @Description : This function will instantiate the class
+	 * 
 	 * @Param : WebDriver
 	 */
 	public LoginPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
+
 	/*
 	 * @Description:This function will create a new user account
+	 * 
 	 * @Exception: IOException
 	 */
 	public void newuserAccount() throws IOException {
@@ -96,13 +100,15 @@ public class LoginPage extends Reusable_Logic {
 			System.out.println("fields are not present");
 		}
 	}
-	
+
 	/*
 	 * @Description: This function will update the account details
+	 * 
 	 * @param: String
 	 */
 
-	public void accountDetails(String date, String month, String year) throws IOException {
+	public void accountDetails(String date, String month, String year)
+			throws IOException {
 		String emailid = emailAddField.getText();
 		System.out.println("Email id entered as " + emailid);
 
@@ -112,14 +118,16 @@ public class LoginPage extends Reusable_Logic {
 			this.firstName.sendKeys(Common_Constants.F_NAME);
 			this.lastName.sendKeys(Common_Constants.L_NAME);
 			this.enterPassword.sendKeys(Common_Constants.PASSWORD);
-			
+
 			select_ByValue(dateDropDown, date);
 			select_ByValue(monthDropDown, month);
 			select_ByValue(yearDropDown, year);
 		}
 	}
+
 	/*
 	 * @Description: This function will update the contact details
+	 * 
 	 * @Param:String
 	 */
 
@@ -144,7 +152,8 @@ public class LoginPage extends Reusable_Logic {
 			wait_Till_PageLoad();
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("StakTrace for Contact Details"+ "" + e.getMessage());
+			System.out.println("StakTrace for Contact Details" + ""
+					+ e.getMessage());
 		}
 	}
 

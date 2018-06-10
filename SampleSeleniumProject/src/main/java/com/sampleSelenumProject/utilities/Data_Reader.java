@@ -23,9 +23,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
 
 /**
- * @Description : This class will read constant parameterized input data from excel using dataProvider
+ * @Description : This class will read constant parameterized input data from
+ *              excel using dataProvider
  */
-public class Data_Reader extends Log {
+public class Data_Reader {
 
 	static InputStream inStream;
 
@@ -45,7 +46,7 @@ public class Data_Reader extends Log {
 			excel_data = new String[rows][3];
 			for (int i = 1; i <= rows; i++) {
 				XSSFRow row = sheet.getRow(i);
-				//describe
+				// describe
 				for (int j = 0; j < 3; j++) {
 					System.out.println("Dyanmic Row Values"
 							+ row.getCell(j).toString());
@@ -53,16 +54,17 @@ public class Data_Reader extends Log {
 				}
 			}
 		} catch (IOException exp) {
-			Log.info
-			//Log.info("File Not Found "+exp.getMessage());
+			System.out.println("File Not Found " + exp.getMessage());
 		}
 		return excel_data;
 	}
+
 	/*
-	 * @Description : This function will read dynamic data from excel 
+	 * @Description : This function will read dynamic data from excel
+	 * 
 	 * @PAram: String ,int
 	 */
-	
+
 	public String getValuesFromExcel(String sheetName, int rowNum, int colNum)
 			throws EncryptedDocumentException, InvalidFormatException,
 			IOException {
@@ -77,7 +79,7 @@ public class Data_Reader extends Log {
 			value = rw.getCell(colNum).getStringCellValue();
 
 		} catch (FileNotFoundException e) {
-			System.out.println("File Not Found "+ e.getMessage());
+			System.out.println("File Not Found " + e.getMessage());
 		}
 		return value;
 	}

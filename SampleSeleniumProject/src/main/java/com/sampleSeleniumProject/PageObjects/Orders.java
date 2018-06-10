@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.sampleSelenumProject.utilities.Data_Reader;
 import com.sampleSelenumProject.utilities.Reusable_Logic;
+
 /**
  * @Author : Aparna
  * @Description : This class represents order functionality
@@ -70,12 +71,12 @@ public class Orders extends Reusable_Logic {
 	public Orders(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
+
 	/**
 	 * @Description: This function will create an order for Woman
 	 */
 	public void womenAppearalOrder() throws InterruptedException, IOException,
-											EncryptedDocumentException,
-											InvalidFormatException {
+			EncryptedDocumentException, InvalidFormatException {
 		try {
 			String sort = dataReader.getValuesFromExcel("Sheet1", 1, 6);
 			String size = dataReader.getValuesFromExcel("Sheet1", 1, 7);
@@ -84,14 +85,14 @@ public class Orders extends Reusable_Logic {
 			wait_Till_PageLoad();
 			scrollDown();
 
-			select_ByValue(sortByAscOrderDropDown,sort);
+			select_ByValue(sortByAscOrderDropDown, sort);
 			wait(1000);
 			mouseHover(item);
 			wait_Till_PageLoad();
 			if (this.moreOptn.isDisplayed()) {
 				this.moreOptn.click();
 				select_ByValue(sizeDD, size);
-				
+
 				this.chooseClr.click();
 				wait_Till_PageLoad();
 				this.addTOCart.click();

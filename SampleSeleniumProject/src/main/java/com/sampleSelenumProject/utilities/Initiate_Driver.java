@@ -11,6 +11,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
  */
 public class Initiate_Driver {
 	public static WebDriver driver;
+
 	/**
 	 * @Description: This class will initiate the browser Driver
 	 * @Param: String
