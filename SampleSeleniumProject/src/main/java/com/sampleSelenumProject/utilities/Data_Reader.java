@@ -46,7 +46,6 @@ public class Data_Reader {
 			excel_data = new String[rows][3];
 			for (int i = 1; i <= rows; i++) {
 				XSSFRow row = sheet.getRow(i);
-				// describe
 				for (int j = 0; j < 3; j++) {
 					System.out.println("Dyanmic Row Values"
 							+ row.getCell(j).toString());
