@@ -10,7 +10,7 @@ import com.sampleSelenumProject.utilities.Common_Constants;
 import com.sampleSelenumProject.utilities.Reusable_Logic;
 
 public class LoginPage extends Reusable_Logic {
-//My first change
+
 	@FindBy(xpath = "//div/a[contains(@class,'login')]")
 	private WebElement signin;
 	@FindBy(xpath = "//div/form/h3[contains(text(),'Create an account')]")
