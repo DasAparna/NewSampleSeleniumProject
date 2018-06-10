@@ -92,7 +92,7 @@ public class LoginPage extends Reusable_Logic {
 		String emailid = emailAddField.getText();
 
 		if (emailid.contentEquals(Common_Constants.emailid)) {
-			System.out.println(emailid);
+			System.out.println("Email id entered as " + " " + emailid);
 		}
 
 		if (personalInfoTxt.isDisplayed() && this.Fgender.isDisplayed()) {
