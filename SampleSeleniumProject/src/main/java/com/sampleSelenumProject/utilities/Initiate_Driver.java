@@ -13,7 +13,7 @@ public class Initiate_Driver {
 	public static WebDriver driver;
 
 	/**
-	 * @Description: This class will initiate the browser Driver
+	 * @Description: This function will initiate the browser Driver
 	 * @Param: String
 	 */
 	public static void initiate_driver(String browser) {

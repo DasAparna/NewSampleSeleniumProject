@@ -11,10 +11,9 @@ import org.openqa.selenium.support.ui.Select;
 import com.sampleSelenumProject.utilities.Common_Constants;
 import com.sampleSelenumProject.utilities.Reusable_Logic;
 
-/*
+/**
  * @Author : Aparna
  * @Description : This class represents the login functionality and user creation
- * 
  */
 
 public class LoginPage extends Reusable_Logic {
@@ -74,16 +73,15 @@ public class LoginPage extends Reusable_Logic {
 	@FindBy(xpath = "//div/ol/li | //a/span[contains(text(),' Home')]")
 	private WebElement errorMsgOrHomePage;
 
-	/*
+	/**
 	 * @Description : This function will instantiate the class
-	 * 
 	 * @Param : WebDriver
 	 */
 	public LoginPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 
-	/*
+	/**
 	 * @Description:This function will create a new user account
 	 * 
 	 * @Exception: IOException
@@ -101,9 +99,8 @@ public class LoginPage extends Reusable_Logic {
 		}
 	}
 
-	/*
+	/**
 	 * @Description: This function will update the account details
-	 * 
 	 * @param: String
 	 */
 
@@ -125,9 +122,8 @@ public class LoginPage extends Reusable_Logic {
 		}
 	}
 
-	/*
+	/**
 	 * @Description: This function will update the contact details
-	 * 
 	 * @Param:String
 	 */
 
