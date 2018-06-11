@@ -16,7 +16,7 @@ public class Common_Constants {
 	public static final String PASSWORD = "sele1234";
 
 	public static final String ADDRESS1 = "AutomationTest";
-	public static final String POSTAL_CODE = "TW33AL";
+	public static final String POSTAL_CODE = "12345";
 	public static final String PRIMARY_PHONE = "08993993939";
 	public static final String F_NAME = "Test First Name";
 	public static final String L_NAME = "Test Last Name";
