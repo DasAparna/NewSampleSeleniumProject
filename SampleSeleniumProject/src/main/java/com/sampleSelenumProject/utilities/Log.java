@@ -3,7 +3,7 @@ package com.sampleSelenumProject.utilities;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-public class Log {
+public class Log{
 
 	/**
 	 * @author: Aparna

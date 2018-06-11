@@ -18,8 +18,8 @@ public class LoginPage_Test extends Initiate_Driver {
 
 	@BeforeTest
 	public void signup() throws InterruptedException {
-		Initiate_Driver driver = new Initiate_Driver();
-		driver.initiate_driver("Chrome");
+		Initiate_Driver idriver = new Initiate_Driver();
+		idriver.initiate_driver("Chrome");
 	}
 
 	@Test(dataProvider = "ReadAutomation_Data", dataProviderClass = Data_Reader.class)

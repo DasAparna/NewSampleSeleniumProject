@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import org.apache.commons.logging.Log;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -26,7 +25,7 @@ import org.testng.annotations.DataProvider;
  * @Description : This class will read constant parameterized input data from
  *              excel using dataProvider
  */
-public class Data_Reader {
+public class Data_Reader extends Log{
 
 	static InputStream inStream;
 
@@ -47,13 +46,13 @@ public class Data_Reader {
 			for (int i = 1; i <= rows; i++) {
 				XSSFRow row = sheet.getRow(i);
 				for (int j = 0; j < 3; j++) {
-					System.out.println("Dyanmic Row Values"
+					Log.info("Dyanmic Row Values"
 							+ row.getCell(j).toString());
 					excel_data[i - 1][j] = row.getCell(j).toString();
 				}
 			}
 		} catch (IOException exp) {
-			System.out.println("File Not Found " + exp.getMessage());
+			Log.info("File Not Found " + exp.getMessage());
 		}
 		return excel_data;
 	}
@@ -78,7 +77,7 @@ public class Data_Reader {
 			value = rw.getCell(colNum).getStringCellValue();
 
 		} catch (FileNotFoundException e) {
-			System.out.println("File Not Found " + e.getMessage());
+			Log.info("File Not Found " + e.getMessage());
 		}
 		return value;
 	}
